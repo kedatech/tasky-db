@@ -1,10 +1,10 @@
-CREATE PROCEDURE SPAuthUsuario
+CREATE PROCEDURE SPLearnUsuario
   @UserName VARCHAR(15)
 AS 
 BEGIN
-  
+  DECLARE @respuesta INT;
   IF (
-      @UserName != '' AND @UserPassword != ''
+      @UserName != ''
       )
   BEGIN
       IF EXISTS (SELECT * FROM Usuario WHERE UserName = @UserName)
@@ -12,9 +12,10 @@ BEGIN
        SELECT * FROM Usuario WHERE UserName = @UserName
       END
       ELSE
-        SET @Status = -3
+        SET @respuesta = -3
   END
   ELSE
-    SET @Status = -1
-  
+    SET @respuesta = -1
+    
+    SELECT @respuesta as respuesta
 END;

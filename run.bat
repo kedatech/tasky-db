@@ -1,6 +1,7 @@
 @echo off
 
 set /p servername="Ingrese el nombre del servidor: "
+set /p bd="Ingrese la BD: "
 set /p username="Ingrese el nombre de usuario: "
 set /p password="Ingrese la contraseña: "
 
@@ -13,7 +14,7 @@ for /D %%d in (*) do (
     cd ./%%d
     for %%f in (*.sql) do (
         echo "Ejecutando %%f"
-        sqlcmd -S %servername% -U %username% -P %password% -d BDSysAsistencia -i "%%f"
+        sqlcmd -S %servername% -U %username% -P %password% -d %bd% -i "%%f"
     )
     cd .. 
 )

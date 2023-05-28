@@ -1,4 +1,4 @@
-Create Procedure SPCreateUsuario
+Create Procedure SPDeleteUsuario
   @UserName VARCHAR(15),
   @UserPassword VARCHAR(15)
 AS 
