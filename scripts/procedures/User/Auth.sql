@@ -1,7 +1,6 @@
 CREATE PROCEDURE SPAuthUsuario
   @UserName VARCHAR(15),
-  @UserPassword VARCHAR(15),
-  @Status INT OUTPUT
+  @UserPassword VARCHAR(15)
 AS 
 BEGIN
   
@@ -13,15 +12,15 @@ BEGIN
       BEGIN
         IF EXISTS (SELECT * FROM Usuario WHERE UserName = @UserName AND UserPassword = @UserPassword)
         BEGIN
-          SET @Status = 100
+          SELECT Status = 100
         END
         ELSE
-          SET @Status = -4
+          SELECT Status = -4
       END
       ELSE
-        SET @Status = -3
+        SELECT Status = -3
   END
   ELSE
-    SET @Status = -1
+    SELECT Status = -1
   
 END;

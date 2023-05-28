@@ -1,0 +1,11 @@
+CREATE PROCEDURE SPDeleteTema
+  @Id INT
+AS 
+BEGIN
+  IF (@Id IS NOT NULL)
+  BEGIN
+    DELETE FROM Tema WHERE Id = @Id
+  END
+  ELSE
+    RETURN -1
+END;
